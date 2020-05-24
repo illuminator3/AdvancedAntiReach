@@ -1,6 +1,7 @@
 package me.illuminator3.aar;
 
 import org.bukkit.Bukkit;
+import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -15,7 +16,15 @@ public class EntityDamageByEntityListener
     @EventHandler
     public void onEntityDamageByEntity(EntityDamageByEntityEvent e)
     {
-        Location damagerLoc = e.getDamager().getLocation(),
+        if (e.getCause() != EntityDamageEvent.DamageCause.ENTITY_ATTACK || !(e.getDamager() instanceof Player))
+            return;
+
+        Player p = (Player) e.getDamager();
+
+        if (p.getGameMode() == GameMode.CREATIVE)
+            return;
+
+        Location damagerLoc = p.getLocation(),
                  entityLoc = e.getEntity().getLocation();
 
         double distance;
@@ -26,11 +35,6 @@ public class EntityDamageByEntityListener
             distance -= (entityLoc.getY() - damagerLoc.getY()) / (2 + 10 / 3);
 
         final double d = Utils.round(distance, 1);
-
-        if (e.getCause() != EntityDamageEvent.DamageCause.ENTITY_ATTACK || !(e.getDamager() instanceof Player))
-            return;
-
-        Player p = (Player) e.getDamager();
 
         if (d >= 4.8)
         {
