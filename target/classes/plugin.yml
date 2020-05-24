@@ -1,0 +1,10 @@
+name: 'AdvancedAntiReach'
+version: '1.0-SNAPSHOT'
+main: 'me.illuminator3.aar.AdvancedAntiReach'
+
+commands:
+  aar:
+    aliases:
+      - 'advancedantireach'
+    description: 'AAR command'
+    usage: '/<command>'
