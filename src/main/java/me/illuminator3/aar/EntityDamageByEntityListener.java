@@ -41,7 +41,7 @@ public class EntityDamageByEntityListener
         int ping = ((CraftPlayer) p).getHandle().ping;
 
         if (ping < 300 && ping > 100)
-            latency = ((double) (ping)) / 100 / 10 * 1.25;
+            latency = ((double) (ping)) / 100 / 10 * 1.1;
         /* else: ping spoof */
 
         if (d >= (4.8 + latency))
