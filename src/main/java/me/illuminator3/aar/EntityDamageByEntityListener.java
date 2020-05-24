@@ -3,6 +3,7 @@ package me.illuminator3.aar;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
+import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -36,7 +37,14 @@ public class EntityDamageByEntityListener
 
         final double d = Utils.round(distance, 1);
 
-        if (d >= 4.8)
+        double latency = 0.;
+        int ping = ((CraftPlayer) p).getHandle().ping;
+
+        if (ping < 300 && ping > 100)
+            latency = ((double) (ping)) / 100 / 10 * 1.25;
+        /* else: ping spoof */
+
+        if (d >= (4.8 + latency))
         {
             int current = 0;
 
