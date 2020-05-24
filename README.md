@@ -1,4 +1,4 @@
-# SCProxy
+# AdvancedAntiReach (AAR)
 
 I don't like README's
 
