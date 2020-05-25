@@ -104,9 +104,9 @@ public class AdvancedAntiReach
                 return true;
             }
 
-            a0.sendMessage("§7§m-------------------------");
-            a0.sendMessage("§7You are viewing page §e" + page + "§8/§e" + maxPage);
-            a0.sendMessage("§7§m-------------------------");
+            a0.sendMessage(PREFIX + "§m-------------------------");
+            a0.sendMessage(PREFIX + "You are viewing page §e" + page + "§8/§e" + maxPage);
+            a0.sendMessage(PREFIX + "§m-------------------------");
 
             try
             {
@@ -115,11 +115,11 @@ public class AdvancedAntiReach
                     UUID uuid = list.get(i);
                     int l = LEVELS.get(uuid);
 
-                    a0.sendMessage("§e" + Bukkit.getOfflinePlayer(uuid).getName() + "§8: §a" + l);
+                    a0.sendMessage(PREFIX + "§e" + Bukkit.getOfflinePlayer(uuid).getName() + "§8: §a" + l);
                 }
             } catch (final Exception ignored) {}
 
-            a0.sendMessage("§7§m-------------------------");
+            a0.sendMessage(PREFIX + "§m-------------------------");
 
             return true;
         });
