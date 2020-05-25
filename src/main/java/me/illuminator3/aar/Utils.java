@@ -2,7 +2,7 @@ package me.illuminator3.aar;
 
 public class Utils
 {
-    public static double round(double value, int precision)
+    public static double cut(double value, int precision)
     {
         String s = Double.toString(value);
 

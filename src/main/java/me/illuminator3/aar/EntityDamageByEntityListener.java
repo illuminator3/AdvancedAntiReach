@@ -35,7 +35,7 @@ public class EntityDamageByEntityListener
         if (damagerLoc.getY() < entityLoc.getY())
             distance -= (entityLoc.getY() - damagerLoc.getY()) / (2 + 10 / 3);
 
-        final double d = Utils.round(distance, 1);
+        final double d = Utils.cut(distance, 1);
 
         double latency = 0.;
         int ping = ((CraftPlayer) p).getHandle().ping;
