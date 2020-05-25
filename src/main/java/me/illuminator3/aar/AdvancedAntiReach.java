@@ -60,7 +60,9 @@ public class AdvancedAntiReach
             "§7§m-----------------------------"
         };
 
+        // general command
         getCommand("aar").setExecutor(Utils.createMessageExecutor(messages));
+        // list command
         getCommand("aarlist").setExecutor((a0, a1, a2, a3) -> {
             if (a3.length >= 2)
             {
@@ -123,6 +125,7 @@ public class AdvancedAntiReach
         });
         getCommand("aarlist").setPermissionMessage(ChatColor.translateAlternateColorCodes('&', CONFIG.getString("messages.noperms")).replace("%prefix%", PREFIX).replace("%permission%", CONFIG.getString("permissions.list")));
         getCommand("aarlist").setPermission(CONFIG.getString("permissions.list"));
+        // info command
         getCommand("arrinfo").setExecutor((a0, a1, a2, a3) -> {
             if (a3.length != 1)
             {
