@@ -1,5 +1,7 @@
 package me.illuminator3.aar;
 
+import org.bukkit.ChatColor;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -11,12 +13,20 @@ public class AdvancedAntiReach
     extends JavaPlugin
 {
     public static final Map<UUID, Integer> LEVELS = new HashMap<>();
-    public static final int MAX = 5;
-    public static final String PREFIX = "§8[§6AAR§8] §7";
+
+    public static FileConfiguration CONFIG;
+    public static String PREFIX;
+    public static int MAX;
 
     @Override
     public void onEnable()
     {
+        saveDefaultConfig();
+
+        CONFIG = getConfig();
+        PREFIX = ChatColor.translateAlternateColorCodes('&', CONFIG.getString("messages.prefix"));
+        MAX = CONFIG.getInt("max");
+
         getCommand("aar").setExecutor(new AARCommand());
         getServer().getPluginManager().registerEvents(new EntityDamageByEntityListener(), this);
     }
@@ -25,6 +35,6 @@ public class AdvancedAntiReach
     {
         int l = LEVELS.get(p.getUniqueId());
 
-        s.sendMessage(PREFIX + "§e" + p.getName() + " §7may be using reach (§a" + r + "§7) [§e" + l + "§8/§e" + MAX + "§7]");
+        s.sendMessage(ChatColor.translateAlternateColorCodes('&', CONFIG.getString("messages.notify")).replace("%prefix%", PREFIX).replace("%player%", p.getName()).replace("%reach%", String.valueOf(r)).replace("%level%", String.valueOf(l)).replace("%max%", String.valueOf(MAX)));
     }
 }

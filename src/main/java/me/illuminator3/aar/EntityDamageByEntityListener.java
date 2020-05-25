@@ -1,6 +1,7 @@
 package me.illuminator3.aar;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
@@ -53,13 +54,13 @@ public class EntityDamageByEntityListener
 
             AdvancedAntiReach.LEVELS.put(p.getUniqueId(), ++current);
 
-            Bukkit.getOnlinePlayers().stream().filter(s -> s.hasPermission("aar.notify")).forEach(f -> AdvancedAntiReach.notify(f, p, d));
+            Bukkit.getOnlinePlayers().stream().filter(s -> s.hasPermission(AdvancedAntiReach.CONFIG.getString("permissions.notify"))).forEach(f -> AdvancedAntiReach.notify(f, p, d));
 
             if (current == AdvancedAntiReach.MAX)
             {
                 AdvancedAntiReach.LEVELS.remove(p.getUniqueId());
 
-                p.kickPlayer(AdvancedAntiReach.PREFIX + "Reach modifications detected");
+                Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), ChatColor.translateAlternateColorCodes('&', AdvancedAntiReach.CONFIG.getString("command")).replace("%prefix%", AdvancedAntiReach.PREFIX).replace("%player%", p.getName()));
             }
 
             e.setCancelled(true);
