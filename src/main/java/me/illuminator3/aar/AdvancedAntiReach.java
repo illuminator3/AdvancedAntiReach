@@ -22,13 +22,33 @@ public class AdvancedAntiReach
     public void onEnable()
     {
         saveDefaultConfig();
+        setDefaults();
+        registerCommand();
+        registerEvents();
+    }
 
+    protected void registerCommand()
+    {
+        String[] messages = {
+            "§7§m---------------------------",
+            "§6AAR §7developed by §eilluminator3",
+            "§7Discord§8: §eilluminator3#0001",
+            "§7§m---------------------------"
+        };
+
+        getCommand("aar").setExecutor(Utils.createMessageExecutor(messages));
+    }
+
+    protected void registerEvents()
+    {
+        getServer().getPluginManager().registerEvents(new EntityDamageByEntityListener(), this);
+    }
+
+    protected void setDefaults()
+    {
         CONFIG = getConfig();
         PREFIX = ChatColor.translateAlternateColorCodes('&', CONFIG.getString("messages.prefix"));
         MAX = CONFIG.getInt("max");
-
-        getCommand("aar").setExecutor(new AARCommand());
-        getServer().getPluginManager().registerEvents(new EntityDamageByEntityListener(), this);
     }
 
     public static void notify(Player s, Player p, double r)
