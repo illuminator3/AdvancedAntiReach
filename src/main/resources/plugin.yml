@@ -8,3 +8,8 @@ commands:
       - 'advancedantireach'
     description: 'AAR command'
     usage: '/<command>'
+  aarlist:
+    aliases:
+      - 'advancedantireachlist'
+    description: 'AAR list command'
+    usage: '/<command> <page>'
