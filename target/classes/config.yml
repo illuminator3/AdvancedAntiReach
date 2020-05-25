@@ -1,0 +1,14 @@
+######################################
+############# AAR CONFIG #############
+######################################
+
+permissions:
+  notify: 'aar.notify'
+
+max: 5
+
+command: 'kick %player% %prefix%Reach modification detected'
+
+messages:
+  prefix: '&8[&6AAR&8] &7'
+  notify: '%prefix%&e%player% &7might be using reach (&a%reach%&7) [&e%level%&8/&e%max%&7]'
