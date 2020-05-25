@@ -2,6 +2,7 @@ package me.illuminator3.aar;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -122,6 +123,37 @@ public class AdvancedAntiReach
         });
         getCommand("aarlist").setPermissionMessage(ChatColor.translateAlternateColorCodes('&', CONFIG.getString("messages.noperms")).replace("%prefix%", PREFIX).replace("%permission%", CONFIG.getString("permissions.list")));
         getCommand("aarlist").setPermission(CONFIG.getString("permissions.list"));
+        getCommand("arrinfo").setExecutor((a0, a1, a2, a3) -> {
+            if (a3.length != 1)
+            {
+                a0.sendMessage(PREFIX + "Usage: /arrinfo [<Player>]");
+
+                return true;
+            }
+
+            @SuppressWarnings("deprecation")
+            OfflinePlayer player = Bukkit.getOfflinePlayer(a3[0]);
+
+            if (player == null)
+            {
+                a0.sendMessage(PREFIX + "No alerts");
+
+                return true;
+            }
+
+            if (!LEVELS.containsKey(player.getUniqueId()))
+            {
+                a0.sendMessage(PREFIX + "No alerts");
+
+                return true;
+            }
+
+            a0.sendMessage(PREFIX + "§e" + player.getName() + "§8: §a" + LEVELS.get(player.getUniqueId()));
+
+            return true;
+        });
+        getCommand("arrinfo").setPermissionMessage(ChatColor.translateAlternateColorCodes('&', CONFIG.getString("messages.noperms")).replace("%prefix%", PREFIX).replace("%permission%", CONFIG.getString("permissions.info")));
+        getCommand("arrinfo").setPermission(CONFIG.getString("permissions.info"));
     }
 
     protected void registerEvents()

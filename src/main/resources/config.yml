@@ -5,6 +5,7 @@
 permissions:
   notify: 'aar.notify'
   list: 'aar.list'
+  info: 'arr.info'
 
 max: 5
 

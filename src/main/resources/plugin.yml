@@ -13,3 +13,8 @@ commands:
       - 'advancedantireachlist'
     description: 'AAR list command'
     usage: '/<command> <page>'
+  arrinfo:
+    aliases:
+      - 'advancedantireachinfo'
+    description: 'AAR info command'
+    usage: '/<command> <player>'
