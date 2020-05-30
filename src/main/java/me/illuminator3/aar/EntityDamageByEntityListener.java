@@ -26,8 +26,13 @@ public class EntityDamageByEntityListener
 
         if (!isValid(distance, p)) return;
 
-        update(p);
+        int update = update(p);
+
         notifyAll(p, distance);
+
+        if (update == AdvancedAntiReach.MAX)
+            AdvancedAntiReach.LEVELS.remove(p.getUniqueId());
+
         cancel(e);
     }
 
@@ -51,14 +56,14 @@ public class EntityDamageByEntityListener
         Bukkit.getOnlinePlayers().stream().filter(s -> s.hasPermission(AdvancedAntiReach.CONFIG.getString("permissions.notify"))).forEach(f -> AdvancedAntiReach.notify(f, p, distance));
     }
 
-    protected void update(Player p)
+    protected int update(Player p)
     {
-        if (updateLevel(p) == AdvancedAntiReach.MAX)
-        {
-            AdvancedAntiReach.LEVELS.remove(p.getUniqueId());
+        int update = updateLevel(p);
 
+        if (update == AdvancedAntiReach.MAX)
             Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), ChatColor.translateAlternateColorCodes('&', AdvancedAntiReach.CONFIG.getString("command")).replace("%prefix%", AdvancedAntiReach.PREFIX).replace("%player%", p.getName()));
-        }
+
+        return update;
     }
 
     protected int updateLevel(Player p)

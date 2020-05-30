@@ -18,7 +18,7 @@ public class AdvancedAntiReach
     public static FileConfiguration CONFIG;
     public static String PREFIX;
     public static int MAX;
-
+   
     @Override
     public void onEnable()
     {
