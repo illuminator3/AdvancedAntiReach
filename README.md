@@ -6,6 +6,7 @@
 [![GitHub license](https://img.shields.io/github/license/illuminator3/AdvancedAntiReach)](https://github.com/illuminator3/AdvancedAntiReach/blob/master/LICENSE)
 [![spigot](https://img.shields.io/badge/spigot--api-1.8.8-yellow)](https://www.spigotmc.org)
 ![size](https://img.shields.io/badge/size-11KB-orange)
+[![download](https://img.shields.io/badge/download-v1.0.0-brightgreen)](https://github.com/illuminator3/AdvancedAntiReach/releases/tag/v1.0.0)
 
 I don't like README's
 
