@@ -11,6 +11,7 @@
 [![contact](https://img.shields.io/badge/contact-hardt--j%40web.de-blueviolet)](mailto:hardt-j@web.de)
 [![platform](https://img.shields.io/badge/platform-spigot-yellow)](https://www.spigotmc.org)
 [![api-version](https://img.shields.io/badge/api--version-1.8.8-yellow)](https://www.spigotmc.org)
+![Hits](https://hitcounter.pythonanywhere.com/count/tag.svg?url=https%3A%2F%2Fgithub.com%2Filluminator3%2Fadvancedantireach)
 
 I don't like README's
 
