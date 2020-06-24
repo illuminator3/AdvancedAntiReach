@@ -46,9 +46,9 @@ public class EntityDamageByEntityListener
         return distance >= 4.8 + getLatency(p);
     }
 
-    protected void cancel(Cancellable c)
+    protected void cancel(EntityDamageByEntityEvent e)
     {
-        c.setCancelled(true);
+        e.setDamage(0.d);
     }
 
     protected void notifyAll(Player p, double distance)
